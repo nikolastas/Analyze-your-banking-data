@@ -5,7 +5,7 @@ import openpyxl
 import xlsxwriter
 from pathlib import Path
 
-xlsx_file = Path( '2020.xlsx')
+xlsx_file = Path( '2020.xlsx') #your xlsx file name 
 
 wb_obj = openpyxl.load_workbook(xlsx_file)
 sheet = wb_obj.active
@@ -20,7 +20,7 @@ for row in sheet.iter_rows(7, 212):
   
 print("sum for 2020",sum)
 #print(table)
-xlsx_file = Path( '2021.xlsx')
+xlsx_file = Path( '2021.xlsx') #your xlsx file name 
 
 wb_obj = openpyxl.load_workbook(xlsx_file)
 sheet = wb_obj.active
@@ -32,7 +32,7 @@ valueoftranminus={}
 valueoftranplus={}
 print("--------------------------------------")
 wb = openpyxl.Workbook()
-possiblecharges=["ΑΡΓΥΡΩ ΑΓΓΕΛΗ", "AMZ", "PAYPAL", "BANGGOOD","Revolut" ]
+possiblecharges=["employee", "AMZ", "PAYPAL", "BANGGOOD","Revolut" ]
 for row in sheet.iter_rows(7, 212):
     value=row[4].value
     k=int(0 if value is None else value)
@@ -47,14 +47,13 @@ for row in sheet.iter_rows(7, 212):
 
             if x not in tableofcharges:
                 tableofcharges[x]=1
-                print ("i am here", row[4].value)
+                
                 if k <0:
                     valueoftranminus[x]=k
                 else:
                     valueoftranplus[x]=k
             else :
-                print("i am here2", k)
-                print("looking for ", x, "in ",tableofcharges)
+                
                 tableofcharges[x]=tableofcharges[x]+1
                 if k<0:
                     temp=valueoftranminus.get(x, 0)
@@ -64,7 +63,7 @@ for row in sheet.iter_rows(7, 212):
                     temp=valueoftranplus.get(x, 0)
                     valueoftranplus[x]=temp+k
                     temp=0
-    print("done", k)
+    
     if type_of_trans not in tableofcategories:
         tableofcategories[type_of_trans]=1
     else:
