@@ -5,7 +5,7 @@ import datetime
 
 
 file = './sample2.xlsx'
-writingFile = 'C:/Users/Nikolas/Desktop/Book3.xlsx'
+writingFile = './Book.xlsx'
 xls = pd.ExcelFile(file)
 
 df =  pd.read_excel(xls, "Μηνιαίοι Λογαριασμοί", skiprows=3)
